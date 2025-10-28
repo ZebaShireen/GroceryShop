@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace GroceryShop.Tests.Controllers
+namespace GroceryShop.Tests.ApplicationTests.Api.Controllers
 {
     public class OrdersControllerTests
     {

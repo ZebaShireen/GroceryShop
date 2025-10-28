@@ -1,22 +1,13 @@
 using GroceryShop.Core.Domain.Entities;
+using GroceryShop.Core.Interfaces;
 using GroceryShop.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace GroceryShop.Infrastructure.Repositories
 {
-    public interface IOrderRepository
-    {
-        Task<Order> GetOrderByIdAsync(Guid orderId);
-        Task<IEnumerable<Order>> GetAllOrdersAsync();
-        Task<Guid> AddOrderAsync(Order order);
-        Task UpdateOrderAsync(Order order);
-        Task<bool> DeleteOrderAsync(Guid orderId);
-    }
-
     public class OrderRepository : IOrderRepository
     {
         private readonly ApplicationDbContext _context;

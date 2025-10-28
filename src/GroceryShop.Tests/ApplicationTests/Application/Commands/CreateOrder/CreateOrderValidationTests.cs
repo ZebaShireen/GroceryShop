@@ -5,7 +5,7 @@ using MediatR;
 using GroceryShop.Api.Controllers;
 using GroceryShop.Application.CQRS.Commands.CreateOrder;
 
-namespace GroceryShop.Tests.Controllers
+namespace GroceryShop.Tests.ApplicationTests.Application.Commands.CreateOrder
 {
     public class OrdersControllerValidationTests
     {

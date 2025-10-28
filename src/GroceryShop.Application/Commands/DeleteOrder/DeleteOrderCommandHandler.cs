@@ -2,6 +2,7 @@
 using GroceryShop.Application.CQRS.Commands.CreateOrder;
 using GroceryShop.Application.Exceptions;
 using GroceryShop.Core.Domain.Entities;
+using GroceryShop.Core.Interfaces;
 using GroceryShop.Infrastructure.Repositories;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

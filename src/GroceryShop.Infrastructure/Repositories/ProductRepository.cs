@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using GroceryShop.Infrastructure.Persistence;
 using System.Linq;
 using System.Threading;
+using GroceryShop.Core.Interfaces;
 
 namespace GroceryShop.Infrastructure.Repositories
 {
@@ -61,8 +62,5 @@ namespace GroceryShop.Infrastructure.Repositories
        
     }
 
-    public interface IProductRepository
-    {
-        Task<IEnumerable<ProductDto>> GetAllProductsAsync( CancellationToken cancellationToken);
-    }
+    
 }

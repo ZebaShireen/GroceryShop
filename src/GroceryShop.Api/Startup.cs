@@ -1,9 +1,8 @@
 using FluentValidation;
-using GroceryShop.Api;
 using GroceryShop.Api.Middleware;
 using GroceryShop.Application.CQRS.Commands.CreateOrder;
 using GroceryShop.Application.CQRS.Queries;
-using GroceryShop.Application.Services;
+using GroceryShop.Core.Interfaces;
 using GroceryShop.Infrastructure.Persistence;
 using GroceryShop.Infrastructure.Repositories;
 using MediatR;
@@ -15,7 +14,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Reflection;
 using System.Threading.Tasks;
 
 public class Startup
@@ -34,7 +32,6 @@ public class Startup
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
         services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<IOrderRepository, OrderRepository>();
-        services.AddScoped<ICheckoutService, CheckoutService>();
 
         // Application Services
         services.AddValidatorsFromAssemblyContaining<CreateOrderCommandValidator>();

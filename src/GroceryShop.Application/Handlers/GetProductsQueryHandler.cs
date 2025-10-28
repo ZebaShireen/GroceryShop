@@ -1,6 +1,6 @@
 using GroceryShop.Application.CQRS.Queries;
 using GroceryShop.Core.DTOs;
-using GroceryShop.Infrastructure.Repositories;
+using GroceryShop.Core.Interfaces;
 using MediatR;
 using System.Collections.Generic;
 using System.Linq;

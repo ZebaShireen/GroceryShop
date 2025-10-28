@@ -10,7 +10,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace GroceryShop.Tests.ApplicationTests
+namespace GroceryShop.Tests.ApplicationTests.Api.Middleware
 {
     public class ExceptionMiddlewareTests
     {
@@ -22,7 +22,7 @@ namespace GroceryShop.Tests.ApplicationTests
         {
             _loggerMock = new Mock<ILogger<ExceptionHandlingMiddleware>>();
 
-            _next = (HttpContext context) =>
+            _next = (context) =>
                 throw new KeyNotFoundException("Order not found");
 
             _middleware = new ExceptionHandlingMiddleware(_next, _loggerMock.Object);
@@ -34,7 +34,7 @@ namespace GroceryShop.Tests.ApplicationTests
             // Arrange
             var loggerMock = new Mock<ILogger<ExceptionHandlingMiddleware>>();
 
-            RequestDelegate next = (HttpContext _) =>
+            RequestDelegate next = (_) =>
                 throw new Exception("Unexpected error");
 
             var middleware = new ExceptionHandlingMiddleware(next, loggerMock.Object);

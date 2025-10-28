@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using GroceryShop.Application.CQRS.Queries;
 using GroceryShop.Core.DTOs;
-using GroceryShop.Infrastructure.Repositories;
+using GroceryShop.Core.Interfaces;
 using MediatR;
 
 namespace GroceryShop.Application.CQRS.Handlers

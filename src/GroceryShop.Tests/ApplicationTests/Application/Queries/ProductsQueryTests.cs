@@ -1,8 +1,7 @@
 using GroceryShop.Application.CQRS.Handlers;
 using GroceryShop.Application.CQRS.Queries;
-using GroceryShop.Core.Domain.Entities;
 using GroceryShop.Core.DTOs;
-using GroceryShop.Infrastructure.Repositories;
+using GroceryShop.Core.Interfaces;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace GroceryShop.Tests.ApplicationTests
+namespace GroceryShop.Tests.ApplicationTests.Application.Queries
 {
     public class ProductsQueryTests
     {
