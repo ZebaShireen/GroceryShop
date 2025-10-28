@@ -18,7 +18,6 @@ namespace GroceryShop.Application.CQRS.Commands.CreateOrder
             _orderRepository = orderRepository;
         }
 
-
         public async Task<Guid> Handle(CreateOrderCommand command, CancellationToken cancellationToken)
         {
             var order = new Order
@@ -27,13 +26,19 @@ namespace GroceryShop.Application.CQRS.Commands.CreateOrder
                 OrderDate = DateTime.UtcNow,
                 CustomerId = command.CustomerId,
                 ShippingAddress = command.ShippingAddress,
-                Items = command.OrderItems?.ConvertAll(item => new Core.Domain.Entities.OrderItem
+                IsLoyaltyMember = command.PurchaseLoyaltyMembership
+            };
+
+            foreach (var item in command.OrderItems)
+            {
+                order.AddItem(new OrderItem
                 {
                     ProductId = item.ProductId,
                     Quantity = item.Quantity,
                     Price = item.Price
-                })
-            };
+                });
+            }
+
 
             // Persist to Database
             return await _orderRepository.AddOrderAsync(order);

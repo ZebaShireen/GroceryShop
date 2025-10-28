@@ -16,8 +16,17 @@ namespace GroceryShop.Core.Domain.Entities
         public void AddItem(OrderItem item)
         {
             Items.Add(item);
-            TotalAmount += item.Price * item.Quantity;
+
+            var itemTotal = item.Price * item.Quantity;
+
+            if (IsLoyaltyMember)
+            {
+                itemTotal *= 0.8m; // 20% discount
+            }
+
+            TotalAmount += itemTotal;
         }
+
     }
 
     public class OrderItem
