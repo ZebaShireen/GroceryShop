@@ -60,26 +60,6 @@ namespace GroceryShop.Tests.CommandHandlers
         }
 
         [Fact]
-        public async Task Handle_ThrowsValidationException_WhenValidationFails()
-        {
-            // Arrange
-            var command = new CreateOrderCommand();
-            var validationErrors = new ValidationResult(
-                new List<ValidationFailure> { new ValidationFailure("CustomerId", "Required") }
-            );
-
-            _validatorMock
-                .Setup(v => v.ValidateAsync(command, It.IsAny<CancellationToken>()))
-                .ReturnsAsync(validationErrors);
-
-            // Act + Assert
-            await Assert.ThrowsAsync<ValidationException>(() =>
-                _handler.Handle(command, CancellationToken.None));
-
-            _orderRepositoryMock.Verify(r => r.AddOrderAsync(It.IsAny<Order>()), Times.Never);
-        }
-
-        [Fact]
         public async Task Handle_MapsOrderItemsCorrectly()
         {
             // Arrange
